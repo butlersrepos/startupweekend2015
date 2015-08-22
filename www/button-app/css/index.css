@@ -13,4 +13,8 @@ body {
     background: #EB585C;
     border: 1vh solid #111111;
     height: 25vw;
-    width: 25vw; }
+    width: 25vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; }
