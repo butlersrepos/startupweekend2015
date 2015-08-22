@@ -1,0 +1,25 @@
+{
+  "name": "startupweekend2015",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/butlersrepos/startupweekend2015.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/butlersrepos/startupweekend2015/issues"
+  },
+  "homepage": "https://github.com/butlersrepos/startupweekend2015",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^2.0.4"
+  },
+  "dependencies": {}
+}

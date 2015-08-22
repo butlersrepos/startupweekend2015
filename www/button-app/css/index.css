@@ -1,0 +1,16 @@
+body {
+  background: #eee;
+  margin: 0; }
+
+.button-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .button-container .the-button {
+    position: relative;
+    background: #EB585C;
+    border: 1vh solid #111111;
+    height: 25vw;
+    width: 25vw; }
