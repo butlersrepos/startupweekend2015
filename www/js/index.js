@@ -34,6 +34,35 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        var meow = new Media('file:///android_asset/www/sounds/meow1.wav',
+            function () { console.log("playAudio():Audio Success"); },
+            function (err) { console.log("playAudio():Audio Error: " + err); }
+        );
+
+        if (navigator.accelerometer) {
+            function onSuccess(acceleration) {
+                if (Math.abs(acceleration.x) > 10 ||
+                    Math.abs(acceleration.y) > 10 ||
+                    Math.abs(acceleration.z) > 10) {
+
+                    meow.play();
+
+                    //alert('Acceleration X: ' + acceleration.x + '\n' +
+                    //    'Acceleration Y: ' + acceleration.y + '\n' +
+                    //    'Acceleration Z: ' + acceleration.z + '\n' +
+                    //    'Timestamp: '      + acceleration.timestamp + '\n');
+                }
+            };
+
+            function onError() {
+                alert('onError!');
+            };
+
+            var options = { frequency: 500 };  // Update every 3 seconds
+
+            var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
