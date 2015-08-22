@@ -35,6 +35,8 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
+        var notificationId = 0;
+
         var meow = new Media('file:///android_asset/www/sounds/meow1.wav',
             function () { console.log("playAudio():Audio Success"); },
             function (err) { console.log("playAudio():Audio Error: " + err); }
@@ -42,10 +44,18 @@ var app = {
 
         if (navigator.accelerometer) {
             function onSuccess(acceleration) {
-                if (acceleration.x < -5 ||
-                    acceleration.z < -5) {
+                if (acceleration.x < -10 ||
+                    acceleration.z < -8) {
 
                     meow.play();
+
+                    cordova.plugins.notification.local.schedule({
+                        id: notificationId,
+                        title: "Meow!",
+                        text: "Watch out meow!"
+                    });
+
+                    notificationId++;
 
                     //alert('Acceleration X: ' + acceleration.x + '\n' +
                     //    'Acceleration Y: ' + acceleration.y + '\n' +
