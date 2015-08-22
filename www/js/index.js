@@ -42,9 +42,8 @@ var app = {
 
         if (navigator.accelerometer) {
             function onSuccess(acceleration) {
-                if (Math.abs(acceleration.x) > 10 ||
-                    Math.abs(acceleration.y) > 10 ||
-                    Math.abs(acceleration.z) > 10) {
+                if (acceleration.x < -5 ||
+                    acceleration.z < -5) {
 
                     meow.play();
 
@@ -59,7 +58,7 @@ var app = {
                 alert('onError!');
             };
 
-            var options = { frequency: 500 };  // Update every 3 seconds
+            var options = { frequency: 100 };  // Update every 3 seconds
 
             var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
         }
