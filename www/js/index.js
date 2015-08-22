@@ -34,6 +34,44 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        var notificationId = 0;
+
+        var meow = new Media('file:///android_asset/www/sounds/meow1.wav',
+            function () { console.log("playAudio():Audio Success"); },
+            function (err) { console.log("playAudio():Audio Error: " + err); }
+        );
+
+        if (navigator.accelerometer) {
+            function onSuccess(acceleration) {
+                if (acceleration.x < -10 ||
+                    acceleration.z < -8) {
+
+                    meow.play();
+
+                    cordova.plugins.notification.local.schedule({
+                        id: notificationId,
+                        title: "Meow!",
+                        text: "Watch out meow!"
+                    });
+
+                    notificationId++;
+
+                    //alert('Acceleration X: ' + acceleration.x + '\n' +
+                    //    'Acceleration Y: ' + acceleration.y + '\n' +
+                    //    'Acceleration Z: ' + acceleration.z + '\n' +
+                    //    'Timestamp: '      + acceleration.timestamp + '\n');
+                }
+            };
+
+            function onError() {
+                alert('onError!');
+            };
+
+            var options = { frequency: 100 };  // Update every 3 seconds
+
+            var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
