@@ -36,6 +36,7 @@ var app = {
         app.receivedEvent('deviceready');
 
         var notificationId = 0;
+        var meowCount = document.getElementById('meow-count');
 
         var meow = new Media('file:///android_asset/www/sounds/meow1.wav',
             function () { console.log("playAudio():Audio Success"); },
@@ -57,10 +58,7 @@ var app = {
 
                     notificationId++;
 
-                    //alert('Acceleration X: ' + acceleration.x + '\n' +
-                    //    'Acceleration Y: ' + acceleration.y + '\n' +
-                    //    'Acceleration Z: ' + acceleration.z + '\n' +
-                    //    'Timestamp: '      + acceleration.timestamp + '\n');
+                    meowCount.innerHTML = 'Meow!' + notificationId;
                 }
             };
 
