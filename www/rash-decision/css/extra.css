@@ -1,17 +1,17 @@
 @-webkit-keyframes throb {
-    from { width: 512px; }
-    to { width: 500px; }
+    from { width: 100%; }
+    to { width: 98%; }
 }
 @-moz-keyframes throb {
-    from { width: 512px; }
-    to { width: 500px; }
+    from { width: 100%; }
+    to { width: 98%; }
 }@keyframes throb {
-     from { width: 512px; }
-     to { width: 500px; }
+     from { width: 100%; }
+     to { width: 98%; }
  }
 
 
-#logo {
+.logo {
     -webkit-animation: throb 1s infinite alternate;
     -moz-animation: throb 1s infinite alternate;
     -animation: throb 1s infinite alternate;
