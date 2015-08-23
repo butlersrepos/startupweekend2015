@@ -4,22 +4,28 @@ var sass = require( 'gulp-sass' );
 
 var paths = {
 	jade: 'jade/**/*.jade',
+	js  : 'js/**/*.js',
 	scss: 'scss/**/*.scss'
 };
 
 gulp.task( 'build:html', function() {
 	gulp.src( paths.jade )
 		.pipe( jade() )
-		.pipe( gulp.dest( './' ) );
+		.pipe( gulp.dest( '../../www/button-app' ) );
 } );
 
 gulp.task( 'build:css', function() {
 	gulp.src( paths.scss )
 		.pipe( sass() )
-		.pipe( gulp.dest( 'css/' ) );
+		.pipe( gulp.dest( '../../www/button-app/css/' ) );
 } );
 
-gulp.task( 'default', ['build:html', 'build:css'], function() {
+gulp.task( 'build:js', function() {
+	gulp.src( paths.js )
+		.pipe( gulp.dest( '../../www/button-app/js' ) );
+} );
+
+gulp.task( 'default', ['build:js', 'build:html', 'build:css'], function() {
 	gulp.watch( paths.jade, ['build:html'] );
-	gulp.watch( paths.scss, ['build:css']);
+	gulp.watch( paths.scss, ['build:css'] );
 } );
