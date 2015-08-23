@@ -25,13 +25,13 @@ var Main = {
 };
 
 function getLastClicked() {
-	window.resolveLocalFileSystemURL( cordova.file.applicationDirectory + "www/button-app/last-clicked.txt", gotFile, fail );
+	window.resolveLocalFileSystemURL( cordova.file.dataDirectory + "/last-clicked.txt", gotFile, fail );
 }
 
 function writeTimestamp() {
-	window.resolveLocalFileSystemURL( cordova.file.applicationDirectory + "www/button-app/last-clicked.txt",
+	window.resolveLocalFileSystemURL( cordova.file.dataDirectory,
 		function( fileEntry ) {
-			fileEntry.file( function( file ) {
+			fileEntry.getFile( 'last-clicked.txt', {create:false}, function( file ) {
 				file.createWriter( function( fileWriter ) {
 					fileWriter.write( new Blob( ['Sat Aug 22 2015 20:16:19 GMT-0400 (EDT)'], { type: 'text/plain' } ) );
 					console.log( "i did it?" );
